@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item!
 
+  def index
+    @items = Item.all
+  end
+
   def show; end
 
   def edit; end
