@@ -1,5 +1,13 @@
+<h1>Item</h1>
 <% @items.each do |item| %>
   <h3><%= item.title %></h3>
   <%= link_to "Show item", item_path(item) %>
+  <hr>
+<% end %>
+
+<h1>Item2</h1>
+<% @items2.each do |item| %>
+  <h3><%= item.title %></h3>
+  <%= link_to "Show item", item2_path(item) %>
   <hr>
 <% end %>
