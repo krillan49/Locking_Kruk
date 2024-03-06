@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @items = Item2.all
+    @items2 = Item2.all
   end
 
   def show; end

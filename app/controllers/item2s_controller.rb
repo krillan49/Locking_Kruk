@@ -1,13 +1,21 @@
 class Item2sController < ApplicationController
-  before_action :set_item!, except: [:index]
+  before_action :set_item!
 
   def show; end
 
   def edit; end
 
   def update
-    if @item.update item_params
-      redirect_to item_path(@item)
+    result = nil
+
+    @item.with_lock do
+      @item.title = params[:item2][:title]
+      result = @item.save
+      sleep 10
+    end
+
+    if result
+      redirect_to item2_path(@item)
     else
       render :edit
     end
@@ -20,6 +28,6 @@ class Item2sController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title)
+    params.require(:item2).permit(:title)
   end
 end
